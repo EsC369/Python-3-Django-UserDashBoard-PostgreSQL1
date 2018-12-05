@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<!-- NAVBAR Partial/template block -->
+{% extends "UserDB_app/navbar.html" %} {% block body_blockNavbar %}
+<!-- END NAVBAR at bottom -->
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>User Dashboard </title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous"> {% load static %}
+    <link rel='stylesheet' href="{% static '/UserDB_app/css/style.css' %}" media="screen" title="no title" charset="utf-8">
+</head>
+
+<body>
+    <div id="wrapper">
+        <div class="container" align="center">
+            {% if messages %} {% for message in messages %}
+            <div {% if message.tags %} class='{{ message.tags }}' {% endif %}>
+                <p style="color:red;">{{ message }}</p>
+            </div>
+            {% endfor %} {% endif %}
+
+            <div align="center" class=header>
+                <div class="border">
+                    <h6>Posted By: {{user.fName}} {{user.lName}}</h6>
+                    <p style="font-weight:bold;" align="left"> Content:</p>
+                    <p align="center">{{message.content}}</p>
+                </div>
+
+            </div>
+            <!-- MESSAGE BOARD -->
+            <div class="container wall_container">
+                <hr>
+                <div align="center" class="col-md-12">
+                    <form action="msgComment" , method="POST">
+                        {% csrf_token %}
+                        <textarea for="com_content" class="form-control comment_box" name="com_content" id="com_content"></textarea>
+                        <input type="hidden" name="message_id" id="message_id" value={{message.id}}>
+                        <input class="btn btn-sm btn-info" type="submit" value="Post Comment">
+                    </form>
+                    <hr>
+                    <!-- COMMENT BOARD -->
+                    <h3>Comments:</h3>
+                    {% for com in comments %} {% if message.id == com.message_id %}
+                    <div class="comWindow border">
+                        <p class="comheader">Comment Posted by: {{com.user.fName}}&nbsp{{com.user.lName}} </p>
+                        <p class="message_comment">{{com.content}}</p>
+                        <p class="comfooter">Created at: {{com.created_at}}</p>
+                        {% if com.user.id == request.session.id %}
+                        <a href="/deleteComment/{{com.id}}/{{message.id}}" onclick="return confirm('Are You Sure You Want To Delete This Comment?');" class="btn btn-sm btn-danger">Delete Comment</a>
+                        {% endif %}
+                    </div>
+                    {% endif %} {% endfor %}
+
+                </div>
+                <!-- END -->
+                <hr>
+            </div>
+            <!-- END -->
+            <br>
+        </div>
+
+</body>
+
+</html>
+{% endblock %}

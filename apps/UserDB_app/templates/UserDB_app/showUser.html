@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<!-- NAVBAR Partial/template block -->
+{% extends "UserDB_app/navbar.html" %} {% block body_blockNavbar %}
+<!-- END NAVBAR at bottom -->
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>User Dashboard </title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous"> {% load static %}
+    <link rel='stylesheet' href="{% static '/UserDB_app/css/style.css' %}" media="screen" title="no title" charset="utf-8">
+</head>
+
+<body>
+    <div id="wrapper">
+        <div class="container" align="center">
+            {% if messages %} {% for message in messages %}
+            <div {% if message.tags %} class='{{ message.tags }}' {% endif %}>
+                <p style="color:red;">{{ message }}</p>
+            </div>
+            {% endfor %} {% endif %}
+
+            <div align="left"class=header>
+                <h2>{{user.fName}} {{user.lName}}</h2>
+                <p>Registered On: {{user.created_at}}</p>
+                <p>User ID: {{user.id}}</p>
+                <p>Email Address: {{user.email}}</p>
+                <p>How Many Messages Posted: {{msgCount}}</p>
+            </div>
+            <h2 class="bold">Messages Posted By {{user.fName}} {{user.lName}}:</h2>
+
+            <!-- MESSAGE BOARD -->
+            <div class="container wall_container">
+                <div align="center" class="col-md-12">
+                    <hr>
+                    {% if userMessages %} 
+                    {% for message in userMessages %}
+                    <div class="border">
+                        <div class="comWindow border">
+                            <h3>Message:</h3>
+                            <p class="messheader"><span ><span class="messfooter"><a href="/showMsg/{{message.id}}">View</a></span></span>
+                            <p>{{ message.content }}</p>
+                            <p class="messfooter"> Created at: {{ message.created_at }}</p>
+                            <!-- comment count -->
+                            <p style="font-weight:bold;">{{ message.message_comments.count }}  Comments</p>
+                            <!-- comment count end -->
+                            {% if message.user.id == request.session.id %}
+                            <a href="/delete/{{message.id}}" onclick="return confirm('Are You Sure You Want To Delete This Message?');" class="btn btn-xs btn-danger" >Delete Message</a>
+                            {% endif %}
+                        </div>                     
+                    </div>
+                    <hr>
+                    {% endfor %}
+                    <!-- END -->
+                    {% else %}
+                    <p>No Messages!</p>
+                    {% endif %}
+                <br>
+            </div>
+
+</body>
+
+</html>
+{% endblock %}

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous"> {% load static %}
+    <link rel='stylesheet' href="{% static '/UserDB_app/css/style.css' %}" charset="utf-8">
+</head>
+<!-- NAVBAR -->
+
+<body>
+    <div class="container">
+        <nav class="navbar navbar-expand-md navbar-info ">
+
+            <a class="navbar-brand" href="/">
+                <span class="white">User Dashboard</a>
+            </span>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/">Home
+                            <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+
+                    {% if 'id' in request.session %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="/success">Message Board</a>
+                    </li>
+                    <li class="nav-item">
+
+                        {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link disabled" href="#">Message Board</a>
+                        </li>
+                        {% endif %}
+                </ul>
+
+                {% if 'id' in request.session %}
+                <form method="GET" class="inline" action="">
+                    {% csrf_token %}
+                    <input style="display:inline-block;border-radius:8px;" type="text" name="search" value="{{request.GET.search}}" placeholder="Messages Or Users">
+                    <input style="margin:10px;" type="submit" class="btn btn-sm btn-success" value="Search">
+                </form>
+                </li>
+                <a href="/logout" class="nav-link">Logout</a>
+                {% else %}
+                <a href="/logpage" class="nav-link">Sign In</a>
+                {% endif %}
+            </div>
+        </nav>
+        </head>
+        <div class="container">
+            {% block body_blockNavbar %}
+            <!-- ANYTHINGOUTSIDE OF THIS WILL BE INHERITED IF YOU EXTEND! -->
+            <!-- EXAMPLE THIS IS WHERE YOUR OTHER PAGES WILL BE DISPLAYED! iNBETWEEN THE NAVBAR AND FOOTER! -->
+            {% endblock %}
+        </div>
+    </div>
+    </div>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="container">
+        <div style="color:black; background-color:#e9ecef;" class="container footer">
+            <!-- Footer -->
+            <footer class="page-footer font-small blue pt-4">
+                <!-- Footer Links -->
+                <div class="container-fluid text-center text-md-left">
+                    <!-- Grid row -->
+                    <div class="row">
+                        <!-- Grid column -->
+                        <div class="col-md-6 mt-md-0 mt-3">
+                            <!-- Content -->
+                            <h5 class="text-uppercase">Ryan's Content</h5>
+                            <p>Where Dreams Come True!</p>
+                        </div>
+                        <!-- Grid column -->
+                        <hr class="clearfix w-100 d-md-none pb-3">
+                        <!-- Grid column -->
+                        <div class="col-md-3 mb-md-0 mb-3">
+                            <!-- Links -->
+                            <h5 class="text-uppercase">Links</h5>
+                            <ul class="list-unstyled">
+                                <li>
+                                    <a href="https://ryankensmith.com/#openModal2">Dev Space Project</a>
+                                </li>
+                                <li>
+                                    <a href="https://ryankensmith.com/#openModal1">Alpha Blog Project</a>
+                                </li>
+                                <li>
+                                    <a href="https://ryankensmith.com/" target="_blank"> Ryan Smith Portfolio</a>
+                                </li>
+                            </ul>
+                    </div>
+                        <!-- Grid column -->
+                        <!-- <div class="col-md-3 mb-md-0 mb-3"> -->
+                            <!-- Links -->
+                            <!-- <h5 class="text-uppercase">Links</h5>
+                            <ul class="list-unstyled"> -->
+                                <!-- <li>
+                                    <a href="https://ryankensmith.com/#openModal2">Dev Space Project</a>
+                                </li>
+                                <li>
+                                    <a href="https://ryankensmith.com/#openModal1">Alpha Blog Project</a>
+                                </li>
+                                <li>
+                                    <a href="https://ryankensmith.com/" target="_blank"> Ryan Smith Portfolio</a>
+                                </li>
+                            </ul>
+                        </div> -->
+                        <!-- Grid column -->
+                    </div>
+                    <!-- Grid row -->
+                </div>
+                <!-- Footer Links -->
+                <!-- Copyright -->
+                <div class="footer-copyright text-center py-3">© 2018 Copyright: User Dashboard</div>
+                <!-- Copyright -->
+            </footer>
+            <!-- Footer -->
+            </head>
+            <div class="container">
+                {% block body_blockFooter %}
+                <!-- ANYTHINGOUTSIDE OF THIS WILL BE INHERITED IF YOU EXTEND! -->
+                {% endblock %}
+            </div>
+        </div>
+    </div>
+    </div>
+</body>
+
+</html>

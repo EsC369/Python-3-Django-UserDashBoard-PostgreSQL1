@@ -1,0 +1,184 @@
+
+/* PLaceholder Custom */
+::-webkit-input-placeholder {
+    text-align: center;
+ }
+ 
+ :-moz-placeholder { /* Firefox 18- */
+    text-align: center;  
+ }
+ 
+ ::-moz-placeholder {  /* Firefox 19+ */
+    text-align: center;  
+ }
+ 
+ :-ms-input-placeholder {  
+    text-align: center; 
+ }
+ /* navbar */
+ /* .background_color {
+    background-color: rgb(61, 0, 0) !important;
+ } */
+ .navbar {
+    /* round corners: */
+    border-radius: 15px;
+    background-color: rgb(11, 20, 10);
+    padding: 10px;
+    height: 70px;
+}
+.inline {
+    display: block;
+}
+.jumboBottom {
+    margin:auto;
+    padding:auto;
+    /* height: 90% */
+}
+.footer {
+    padding: 10px;
+    height: 80%;
+    border-radius: 15px;
+    background-color: #7FDBFF;
+}
+/* for forms inputs to be under */
+input, label {
+    display:block;
+}
+ /* END */
+
+ .align{
+    display:inline-block;
+ }
+
+.white{
+    color: white;
+ }
+
+.underline {
+    text-decoration: underline;
+}
+.wrapper {
+    display: block;
+    text-align: center;
+}
+.font20 {
+    font-size: 20px;
+}
+.font40 {
+    font-size: 40px;
+}
+.bold {
+    font-weight: bold;
+}
+.comment_box {
+    width: 90%;
+    margin: 5px;
+}
+.comWindow {
+    background-color:white; 
+}
+.messWindow {
+    background-color:white; 
+}
+
+.btn{
+    margin: 5px;
+}
+.comheader {
+    color: rgb(255, 38, 0);
+    text-align: left;
+    font-size: 10px;
+    font-weight: bold;
+}
+.comfooter {
+    font-size: 9px;
+    font-weight: bold;
+    color: rgb(0, 132, 255);
+    text-align: right;
+}
+.btnfooter {
+    text-align: center;
+}
+
+.messheader {
+    color: rgb(255, 38, 0);
+    text-align: left;
+    font-size: 10px;
+    font-weight: bold;
+}
+.messfooter {
+    font-size: 10px;
+    font-weight: bold;
+    color: rgb(0, 132, 255);
+    text-align: right;
+}
+.center {
+    text-align: center
+}
+.border {
+    border-style: solid black;
+    border-width: 1px;
+    margin: 1%;
+}
+
+.message_box {
+    width: 80%;
+    height: 120px;
+}
+.wall_container{
+    background-color: #eee;
+    min-height: 200px;
+    width: 98%;
+    margin: 10px auto;
+}
+h1 {
+    color: red;
+}
+hr {
+    color: orangered !important; 
+    background-color:orangered !important; 
+    border-color: orangered!important
+}
+
+.regbox,
+.logbox {
+    border: 2px solid black;
+    width: 400px;
+    vertical-align: top;
+    margin: 50px;
+    text-align: left;
+}
+
+table {
+    border: 2px solid black;
+}
+th {
+    border-left: 2px solid black;
+    border-top: 2px solid black;
+    /* border-right: 1px solid black; */
+    margin: 0 5px 0 5px;
+    padding: 3px 5px;
+
+}
+td {
+    border-left: 2px solid black;
+    /* border-right: 1px solid black; */
+    margin: 0 5px 0 5px;
+    padding: 3px 5px;
+}
+label {
+    margin: 5px 5px 10px 10px;
+    display: block;
+}
+/* input {
+    margin: 0px 0px 0px 20px;
+} */
+p {
+    margin: 10px 30px;
+}
+a {
+    margin: 25px 15px;
+}
+.options {
+    margin: 30px 15px;
+}

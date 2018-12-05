@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<!-- NAVBAR Partial/template block -->
+{% extends "UserDB_app/navbar.html" %}
+{% block body_blockNavbar %}
+<!-- END NAVBAR at bottom -->
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>User Dashboard</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+    crossorigin="anonymous">
+    {% load static %}
+    <link rel='stylesheet' href="{% static '/UserDB_app/css/style.css' %}" charset="utf-8">
+</head>
+
+<body>
+    <div id="wrapper">
+        <div class="container background_color" align="center">
+            {% if messages %} {% for message in messages %}
+            <div {% if message.tags %} class='{{ message.tags }}' {% endif %}>
+                <p style="color:red;">{{ message }}</p>
+            </div>
+            {% endfor %} {% endif %}
+            <div class="jumbotron">
+                <h2>
+                    <span class="bold">Welcome to the Test!</h2>
+                </span>
+                <p>Were going to create an awesome app using a MVC framework! This application was built by the people by EsC(Ryan Smith) from
+                    Coding Squad!</p>
+                <a class="btn btn-lg btn-success" href="logpage">Start</a>
+            </div>
+            <div class="container">
+                <div class="row font20">
+                    <div class="col-md-4">
+                        <span class="bold">Manage Users</span>
+                        <p>Using this app you'll learn how to add, remove, and edit users from the application!</p>
+                    </div>
+                    <div class="col-md-4">
+                        <span class="bold">Leave Messages</span>
+                        <p>Users will be able to leave a message to another user using this application!</p>
+                    </div>
+                    <div class="col-md-4">
+                        <span class="bold">Edit User Information</span>
+                        <p>Custom built Admin page, where Admin's will be able to edit other users information (Email, first
+                            name, last name, etc)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
+{% endblock %}
